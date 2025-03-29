@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
-	List,
 	Avatar,
 	Card,
 	Typography,
@@ -10,12 +10,13 @@ import {
 	Button,
 	message,
 	Popconfirm,
+	Row,
+	Col,
 } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { telegramUsersApi } from "@/shared/api/api";
 import styles from "./UsersPage.module.css";
-import { Markdown } from "@/shared/components/Markdown/Markdown";
-const { Title, Text, Paragraph } = Typography;
+const { Title, Text } = Typography;
 
 interface TelegramUser {
 	id: number;
@@ -29,6 +30,7 @@ interface TelegramUser {
 }
 
 export default function UsersPage() {
+	const navigate = useNavigate();
 	const [users, setUsers] = useState<TelegramUser[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
@@ -36,11 +38,13 @@ export default function UsersPage() {
 		null
 	);
 
+	// Создаем карту цветов для каждого пользователя
 	const fetchUsers = async () => {
 		try {
 			setLoading(true);
 			const data = await telegramUsersApi.getUsers();
 			setUsers(data);
+
 			setError(null);
 		} catch (err) {
 			setError("Не удалось загрузить пользователей");
@@ -54,7 +58,8 @@ export default function UsersPage() {
 		fetchUsers();
 	}, []);
 
-	const handleClearAnalysis = async (userId: string) => {
+	const handleClearAnalysis = async (userId: string, e: React.MouseEvent) => {
+		e.stopPropagation(); // Предотвращаем переход на страницу пользователя
 		try {
 			setClearingAnalysis(userId);
 			await telegramUsersApi.clearUserPsychoAnalysis(userId);
@@ -67,6 +72,10 @@ export default function UsersPage() {
 		} finally {
 			setClearingAnalysis(null);
 		}
+	};
+
+	const handleUserClick = (userId: string) => {
+		navigate(`/users/${userId}`);
 	};
 
 	if (loading) {
@@ -96,122 +105,99 @@ export default function UsersPage() {
 			{users.length === 0 ? (
 				<Empty description="Пользователей пока нет" />
 			) : (
-				<Card className={styles.card}>
-					<List
-						itemLayout="horizontal"
-						dataSource={users}
-						renderItem={(user) => (
-							<List.Item
-								key={user.id}
-								className={styles.userItem}
-								actions={[
-									user.psychoAnalysis && (
-										<Popconfirm
-											title="Очистить психоанализ"
-											description="Вы уверены, что хотите очистить психоанализ этого пользователя?"
-											onConfirm={() =>
-												handleClearAnalysis(user.userId)
-											}
-											okText="Да"
-											cancelText="Нет"
-										>
-
-										</Popconfirm>
-									),
-								].filter(Boolean)}
+				<Row gutter={[16, 16]} className={styles.usersGrid}>
+					{users.map((user) => (
+						<Col xs={24} sm={12} md={8} lg={6} key={user.id}>
+							<Card
+								className={styles.userCard}
+								hoverable
+								
+								onClick={() => handleUserClick(user.userId)}
 							>
-								<List.Item.Meta
-									avatar={
-										<Avatar
-											src={user.avatarUrl || undefined}
-											size="large"
-											className={styles.avatar}
+								<div className={styles.userCardContent}>
+									<Avatar
+										src={user.avatarUrl || undefined}
+										size="large"
+										className={styles.avatar}
+									>
+										{!user.avatarUrl &&
+											(user.username || user.firstName)
+												.charAt(0)
+												.toUpperCase()}
+									</Avatar>
+
+									<div className={styles.userInfo}>
+										<Text
+											strong
+											className={styles.userName}
 										>
-											{!user.avatarUrl &&
-												(
-													user.username ||
-													user.firstName
-												)
-													.charAt(0)
-													.toUpperCase()}
-										</Avatar>
-									}
-									title={
-										<div className={styles.userHeader}>
-											<Text strong>
-												{user.firstName}{" "}
-												{user.lastName || ""}
-											</Text>
-											{user.username && (
-												<Tag color="blue">
-													@{user.username}
+											{user.firstName}{" "}
+											{user.lastName || ""}
+										</Text>
+
+										{user.username && (
+											<Tag
+												color="blue"
+												className={styles.usernameTag}
+											>
+												@{user.username}
+											</Tag>
+										)}
+									</div>
+
+									<div className={styles.userStatus}>
+										{user.psychoAnalysis ? (
+											<div
+												className={
+													styles.statusWithAction
+												}
+											>
+												<Tag color="green">
+													Анализ проведен
 												</Tag>
-											)}
-										</div>
-									}
-									description={
-										<div>
-											{user.psychoAnalysis ? (
-												<div
-													className={
-														styles.analysisContainer
+												<Popconfirm
+													title="Очистить психоанализ"
+													description="Вы уверены, что хотите очистить психоанализ этого пользователя?"
+													onConfirm={(e) =>
+														handleClearAnalysis(
+															user.userId,
+															e as React.MouseEvent
+														)
 													}
+													okText="Да"
+													cancelText="Нет"
 												>
-													<div
-														className={
-															styles.analysisHeader
+													<Button
+														type="text"
+														danger
+														size="small"
+														icon={
+															<DeleteOutlined />
 														}
-													>
-														<Text type="secondary">
-															Психоанализ:{" "}
-														</Text>
-														{user.psychoAnalysis && (
-															<Popconfirm
-																title="Очистить психоанализ"
-																description="Вы уверены, что хотите очистить психоанализ этого пользователя?"
-																onConfirm={() =>
-																	handleClearAnalysis(
-																		user.userId
-																	)
-																}
-																okText="Да"
-																cancelText="Нет"
-															>
-																<Button
-																	type="text"
-																	danger
-																	size="small"
-																	icon={
-																		<DeleteOutlined />
-																	}
-																	loading={
-																		clearingAnalysis ===
-																		user.userId
-																	}
-																/>
-															</Popconfirm>
-														)}
-													</div>
-													<Paragraph
-														className={
-															styles.analysisText
+														loading={
+															clearingAnalysis ===
+															user.userId
 														}
-													>
-														<Markdown text={user.psychoAnalysis} />
-													</Paragraph>
-												</div>
-											) : (
-												<Text type="secondary" italic>
-													Психоанализ еще не проведен
-												</Text>
-											)}
-										</div>
-									}
-								/>
-							</List.Item>
-						)}
-					/>
-				</Card>
+														onClick={(e) =>
+															e.stopPropagation()
+														}
+														className={
+															styles.clearButton
+														}
+													/>
+												</Popconfirm>
+											</div>
+										) : (
+											<Tag color="orange">
+												Анализ не проведен
+											</Tag>
+										)}
+									</div>
+								</div>
+							</Card>
+						</Col>
+					))}
+				</Row>
 			)}
 		</div>
 	);

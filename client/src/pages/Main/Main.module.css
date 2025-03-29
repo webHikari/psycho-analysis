@@ -1,0 +1,143 @@
+.container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.pageTitle {
+	margin-bottom: 24px !important;
+	text-align: left;
+	color: #1a1a1a;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 16px;
+}
+
+.loadingContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	width: 100%;
+}
+
+.errorContainer {
+	margin: 20px auto;
+	max-width: 600px;
+}
+
+.statsRow {
+	margin-bottom: 20px;
+}
+
+.statCard {
+	height: 100%;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	border-radius: 8px;
+}
+
+.chartCard {
+	margin-bottom: 20px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	border-radius: 8px;
+}
+
+.progressBar {
+	margin-top: 8px;
+}
+
+.activeUsersList {
+	margin-top: 16px;
+}
+
+.userRank {
+	font-weight: bold;
+	margin-right: 12px;
+}
+
+.topRank {
+	color: #f5a623;
+}
+
+.userInfo {
+	display: flex;
+	align-items: center;
+}
+
+.username {
+	color: #8c8c8c;
+	margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 12px;
+	}
+
+	.pageTitle {
+		font-size: 20px !important;
+		margin-bottom: 16px !important;
+	}
+}
+
+.activeUserItem {
+	padding: 12px 0;
+	transition: background-color 0.3s;
+}
+
+.activeUserItem:hover {
+	background-color: #fafafa;
+}
+
+.userRankContainer {
+	display: flex;
+	align-items: center;
+	margin-right: 8px;
+}
+
+.userRank {
+	width: 24px;
+	margin-right: 12px;
+	text-align: center;
+	font-weight: bold;
+	color: #8c8c8c;
+}
+
+.topRank {
+	color: #f5a623;
+}
+
+.userAvatar {
+	background-color: #1890ff;
+}
+
+.topUserAvatar {
+	background-color: #f5a623;
+	border: 2px solid #f5a623;
+}
+
+.userTitleContainer {
+	display: flex;
+	align-items: center;
+	text-align: left;
+}
+
+.userName {
+	font-weight: 500;
+}
+
+.userHandle {
+	color: #8c8c8c;
+	margin-left: 8px;
+	font-size: 0.9em;
+}
+
+.userDescription {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.userProgress {
+	margin-top: 4px;
+}

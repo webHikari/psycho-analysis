@@ -16,7 +16,7 @@ const ChatWithLLM = async (message: string) => {
 				},
 				body: JSON.stringify({
 					model: "mistral-large-latest",
-					max_tokens: 1000,
+					max_tokens: 10000,
 					temperature: 0.8,
 					messages: [{ role: "user", content: message }],
 				}),

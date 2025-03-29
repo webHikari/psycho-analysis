@@ -10,6 +10,7 @@ const LoginPage = lazy(() => import("@/pages/Login/LoginPage"));
 const RegisterPage = lazy(() => import("@/pages/Register/RegisterPage"));
 const MessagesPage = lazy(() => import("@/pages/Messages/MessagesPage"));
 const UsersPage = lazy(() => import("@/pages/Users/UsersPage"));
+const OneUserPage = lazy(() => import("@/pages/Users/OneUserPage"));
 
 const router = createBrowserRouter([
 	{
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
 				element: (
 					<ProtectedRoute>
 						<UsersPage />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: "users/:userId",
+				element: (
+					<ProtectedRoute>
+						<OneUserPage />
 					</ProtectedRoute>
 				),
 			},

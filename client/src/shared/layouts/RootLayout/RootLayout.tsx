@@ -74,7 +74,7 @@ export const RootLayout = () => {
 							{
 								key: "home",
 								icon: <HomeOutlined />,
-								label: <Link to="/">Home</Link>,
+								label: <Link to="/">Главная</Link>,
 							},
 							isAuthenticated && {
 								key: "messages",

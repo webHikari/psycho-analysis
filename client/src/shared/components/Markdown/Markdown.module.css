@@ -2,6 +2,7 @@
 	font-size: 14px;
 	line-height: 1.5;
 	color: rgba(0, 0, 0, 0.85);
+	text-align: left;
 }
 
 /* Bold text */
@@ -36,6 +37,7 @@
 /* Paragraphs */
 .markdownContent p {
 	margin-bottom: 16px;
+	text-align: left;
 }
 
 /* Headings */
@@ -49,6 +51,7 @@
 	margin-bottom: 16px;
 	font-weight: 600;
 	line-height: 1.25;
+	text-align: left;
 }
 
 .markdownContent h1 {
@@ -97,4 +100,5 @@
 	color: #6a737d;
 	border-left: 0.25em solid #dfe2e5;
 	margin-bottom: 16px;
+	text-align: left;
 }

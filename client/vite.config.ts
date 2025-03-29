@@ -14,4 +14,10 @@ export default defineConfig({
 		host: "0.0.0.0",
 		port: 5173,
 	},
+	// Make sure environment variables are exposed
+	define: {
+		"import.meta.env.VITE_API_URL": JSON.stringify(
+			process.env.VITE_API_URL
+		),
+	},
 });
