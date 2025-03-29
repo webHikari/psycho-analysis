@@ -77,3 +77,5 @@ Project will be available at:
 
 http://localhost:5173
 
+Login: admin
+Password: admin
