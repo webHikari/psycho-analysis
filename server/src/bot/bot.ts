@@ -82,28 +82,36 @@ bot.on("message:text", async (ctx) => {
 		const userPsychoAnalysis = telegramUser.psychoAnalysis;
 
 		const prompt1 = `
-You are a psychological profiling assistant. Your task is to analyze the provided messages and extract key behavioral traits, communication patterns, and emotional tendencies for a user profile.
+# Behavioral Data Extractor for User Profiling
 
-### **Guidelines:**
-1. **Extract information on:**  
-   - **Communication style** (e.g., direct, sarcastic, emotional, formal/informal, use of slang or emojis).  
-   - **Emotional tendencies** (e.g., frustration, enthusiasm, skepticism, humor).  
-   - **Social interaction style** (e.g., actively engages in discussions, prefers short responses).  
-   - **Observable interests** (e.g., technology, gaming, social topics).  
+## ROLE
+You are an assistant specializing in extracting *observable behavioral indicators* and illustrative examples from user messages for psychological profiling. Your output serves as raw data for a subsequent synthesis step.
 
-2. **Be purely descriptive:**  
-   - Stick to **clear patterns in the messages**. No deep psychological interpretations.  
-   - Extract **only from provided messages** without adding assumptions.  
+## OBJECTIVE
+Analyze the provided messages to identify and list key patterns in communication, emotion, interaction, and interests. Focus on concrete examples and observable actions, avoiding deep interpretation.
 
-3. **Format output strictly as a bulleted list in English.**  
+## EXTRACTION TASKS
+1.  **Identify Communication Style:** Focus on *how* the user communicates (e.g., Direct, informal, uses slang, short sentences, sarcastic tone, emojis). *Provide a brief example/quote if illustrative.*
+2.  **Pinpoint Emotional Expressions:** Note *observable displays* of emotion (e.g., Expresses frustration: 'this bug again!', shows enthusiasm: 'awesome update!'). *Stick to visible cues.*
+3.  **Describe Social Interaction Patterns:** Detail *how* the user interacts (e.g., Initiates topics, answers directly, shares info proactively: 'try this link'). *Focus on dynamics.*
+4.  **List Observable Interests:** Identify topics the user *explicitly discusses* (e.g., Technology updates, specific platforms, gaming).
+5.  **Note Overall Impression (Optional):** If a consistent 'vibe' emerges, note it briefly (e.g., 'Appears energetic', 'Seems stressed', 'Comes across as helpful').
+
+## CORE PRINCIPLES & CONSTRAINTS
+- **BEHAVIOR-FOCUSED:** Extract *what* the user does/says, not *why*.
+- **OBJECTIVE & DESCRIPTIVE:** Stick strictly to patterns in messages. **NO** deep psychological analysis or assumptions.
+- **CONCISE:** Keep points brief. Use simple, clear language.
+- **EXAMPLE-DRIVEN:** Include short, illustrative examples/quotes where helpful.
+- **NO JARGON:** Avoid technical psychological terms.
+- **ENGLISH OUTPUT:** Format *strictly* as a bulleted list in English.
+- **RAW DATA:** You are providing factual points for the *next* step.
 
 ---
-### **Recent Messages (timestamped):**  
+### **Recent Messages (timestamped):**
 ${conversationContext}
 
-Extract key points in English as a bulleted list for the user (${
-			username || firstName
-		}):
+---
+Extract key behavioral points (with examples where possible) in English as a bulleted list for the user (${username || firstName}), following all principles:
 `;
 
 		try {
