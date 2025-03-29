@@ -1,0 +1,100 @@
+.container {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.pageTitle {
+	margin-bottom: 24px !important;
+	text-align: left;
+	color: #1a1a1a;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 16px;
+}
+
+.card {
+	margin-top: 20px;
+	width: 100%;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.loadingContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	width: 100%;
+}
+
+.errorContainer {
+	text-align: center;
+	margin-top: 50px;
+	width: 100%;
+}
+
+.userHeader {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.userItem {
+	padding: 16px 24px !important;
+	transition: background-color 0.3s;
+}
+
+.userItem:hover {
+	background-color: #fafafa;
+}
+
+.analysisText {
+	margin-bottom: 0 !important;
+	text-align: left;
+}
+
+.avatar {
+	background-color: #646cff;
+	margin-right: 12px;
+}
+
+.userItem:not(:last-child) {
+	border-bottom: 1px solid #f0f0f0;
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 12px;
+	}
+
+	.userItem {
+		padding: 12px 16px !important;
+	}
+
+	.pageTitle {
+		font-size: 20px !important;
+		margin-bottom: 16px !important;
+	}
+}
+
+.clearButton {
+	margin-left: 8px;
+}
+
+@media (max-width: 576px) {
+	.clearButton {
+		padding: 0 8px;
+	}
+}
+
+.analysisContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.analysisHeader {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 4px;
+}

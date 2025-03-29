@@ -1,0 +1,100 @@
+.markdownContent {
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgba(0, 0, 0, 0.85);
+}
+
+/* Bold text */
+.markdownContent strong {
+	font-weight: 600;
+}
+
+/* Italic text */
+.markdownContent em {
+	font-style: italic;
+}
+
+/* Lists */
+.markdownContent ul,
+.markdownContent ol {
+	margin-left: 20px;
+	margin-bottom: 16px;
+}
+
+.markdownContent ul {
+	list-style-type: disc;
+}
+
+.markdownContent ol {
+	list-style-type: decimal;
+}
+
+.markdownContent li {
+	margin-bottom: 4px;
+}
+
+/* Paragraphs */
+.markdownContent p {
+	margin-bottom: 16px;
+}
+
+/* Headings */
+.markdownContent h1,
+.markdownContent h2,
+.markdownContent h3,
+.markdownContent h4,
+.markdownContent h5,
+.markdownContent h6 {
+	margin-top: 24px;
+	margin-bottom: 16px;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.markdownContent h1 {
+	font-size: 2em;
+}
+
+.markdownContent h2 {
+	font-size: 1.5em;
+}
+
+.markdownContent h3 {
+	font-size: 1.25em;
+}
+
+.markdownContent h4 {
+	font-size: 1em;
+}
+
+/* Code blocks */
+.markdownContent code {
+	padding: 0.2em 0.4em;
+	margin: 0;
+	font-size: 85%;
+	background-color: rgba(0, 0, 0, 0.04);
+	border-radius: 3px;
+}
+
+.markdownContent pre {
+	padding: 16px;
+	overflow: auto;
+	font-size: 85%;
+	line-height: 1.45;
+	background-color: #f6f8fa;
+	border-radius: 3px;
+	margin-bottom: 16px;
+}
+
+.markdownContent pre code {
+	background-color: transparent;
+	padding: 0;
+}
+
+/* Blockquotes */
+.markdownContent blockquote {
+	padding: 0 1em;
+	color: #6a737d;
+	border-left: 0.25em solid #dfe2e5;
+	margin-bottom: 16px;
+}

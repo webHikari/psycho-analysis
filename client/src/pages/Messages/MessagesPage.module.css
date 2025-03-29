@@ -1,0 +1,85 @@
+.container {
+	width: 100%;
+	/* padding: 20px; */
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.pageTitle {
+	margin-bottom: 24px !important;
+	text-align: left;
+	color: #1a1a1a;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 16px;
+}
+
+.card {
+	margin-top: 20px;
+	width: 100%;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.loadingContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	width: 100%;
+}
+
+.errorContainer {
+	text-align: center;
+	margin-top: 50px;
+	width: 100%;
+}
+
+.messageHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.messageDate {
+	font-size: 12px;
+}
+
+.messageItem {
+	padding: 16px 24px !important;
+	transition: background-color 0.3s;
+}
+
+.messageItem:hover {
+	background-color: #fafafa;
+}
+
+.messageText {
+	margin-bottom: 0 !important;
+	text-align: left;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.avatar {
+	background-color: #646cff;
+	margin-right: 12px;
+}
+
+.messageItem:not(:last-child) {
+	border-bottom: 1px solid #f0f0f0;
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 12px;
+	}
+
+	.messageItem {
+		padding: 12px 16px !important;
+	}
+
+	.pageTitle {
+		font-size: 20px !important;
+		margin-bottom: 16px !important;
+	}
+}
