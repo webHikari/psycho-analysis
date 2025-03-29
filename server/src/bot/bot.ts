@@ -111,7 +111,9 @@ Analyze the provided messages to identify and list key patterns in communication
 ${conversationContext}
 
 ---
-Extract key behavioral points (with examples where possible) in English as a bulleted list for the user (${username || firstName}), following all principles:
+Extract key behavioral points (with examples where possible) in English as a bulleted list for the user (${
+			username || firstName
+		}), following all principles:
 `;
 
 		try {

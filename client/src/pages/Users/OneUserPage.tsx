@@ -101,7 +101,6 @@ export default function OneUserPage() {
 			await telegramUsersApi.clearUserPsychoAnalysis(userId);
 			message.success("Психоанализ пользователя успешно очищен");
 
-			// Обновляем данные пользователя
 			const userData = await telegramUsersApi.getUserById(userId);
 			setUser(userData);
 		} catch (err) {
