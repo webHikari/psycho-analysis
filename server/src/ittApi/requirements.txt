@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+transformers
+torch
+Pillow
+accelerate
+aiohttp
+cachetools
+pydantic
+pydantic-settings
+python-dotenv
+sentencepiece
+hf_xet
